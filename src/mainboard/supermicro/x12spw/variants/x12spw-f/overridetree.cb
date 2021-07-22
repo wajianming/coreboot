@@ -1,0 +1,212 @@
+chip soc/intel/xeon_sp/icx
+	register "common_soc_config" = "{
+		.chipset_lockdown = CHIPSET_LOCKDOWN_COREBOOT,
+	}"
+
+	device cpu_cluster 0 on
+		device lapic 0 on end
+	end
+
+	device domain 0 on
+		device pci 00.0 on  end # Host Bridge
+		device pci 00.1 on  end
+		device pci 00.2 on  end
+		device pci 00.4 on  end
+		device pci 01.0 on  end
+		device pci 01.1 on  end
+		device pci 01.2 on  end
+		device pci 01.3 on  end
+		device pci 01.4 on  end
+		device pci 01.5 on  end
+		device pci 01.6 on  end
+		device pci 01.7 on  end
+		device pci 02.0 on  end
+		device pci 02.1 on  end
+		device pci 02.4 on  end
+		device pci 04.0 on  end # SA Thermal device
+		device pci 12.0 on  end # Thermal Subsystem
+		device pci 12.5 on  end # UFS SCS
+		device pci 12.6 on  end # GSPI #2
+		device pci 11.0 on  end
+		device pci 11.1 on  end
+		device pci 11.5 on  end
+		device pci 14.0 on
+			chip drivers/usb/acpi
+				register "desc" = ""Root Hub""
+				register "type" = "UPC_TYPE_HUB"
+				device usb 0.0 on
+					chip drivers/usb/acpi
+						register "desc" = ""USB3/2 Type-A Left Lower""
+						register "type" = "UPC_TYPE_A"
+						device usb 2.0 on end
+					end
+					chip drivers/usb/acpi
+						register "desc" = ""WWAN""
+						register "type" = "UPC_TYPE_INTERNAL"
+						device usb 2.1 on end
+					end
+					chip drivers/usb/acpi
+						register "desc" = ""Bluetooth""
+						register "type" = "UPC_TYPE_INTERNAL"
+						device usb 2.2 on end
+					end
+					chip drivers/usb/acpi
+						register "desc" = ""USB C Connector 1""
+						register "type" = "UPC_TYPE_C_USB2_SS_SWITCH"
+						device usb 2.3 on end
+					end
+					chip drivers/usb/acpi
+						register "desc" = ""USB C Connector 2""
+						register "type" = "UPC_TYPE_C_USB2_SS_SWITCH"
+						device usb 2.4 on end
+					end
+					chip drivers/usb/acpi
+						register "desc" = ""USB C Connector 3""
+						register "type" = "UPC_TYPE_C_USB2_SS_SWITCH"
+						device usb 2.5 on end
+					end
+					chip drivers/usb/acpi
+						register "desc" = ""USB C Connector 4""
+						register "type" = "UPC_TYPE_C_USB2_SS_SWITCH"
+						device usb 2.6 on end
+					end
+					chip drivers/usb/acpi
+						register "desc" = ""USB3/2 Type-A Left Upper""
+						register "type" = "UPC_TYPE_A"
+						device usb 2.7 on end
+					end
+					chip drivers/usb/acpi
+						register "desc" = ""USB2 Type-A Right Lower""
+						register "type" = "UPC_TYPE_A"
+						device usb 2.8 on end
+					end
+					chip drivers/usb/acpi
+						register "desc" = ""USB2 Type-A Right Upper""
+						register "type" = "UPC_TYPE_A"
+						device usb 2.9 on end
+					end
+					chip drivers/usb/acpi
+						register "desc" = ""USB3/2 Type-A Left Lower""
+						register "type" = "UPC_TYPE_A"
+						device usb 3.0 on end
+					end
+					chip drivers/usb/acpi
+						register "desc" = ""USB3/2 Type-A Left Upper""
+						register "type" = "UPC_TYPE_A"
+						device usb 3.1 on end
+					end
+					chip drivers/usb/acpi
+						register "desc" = ""WLAN""
+						register "type" = "UPC_TYPE_INTERNAL"
+						device usb 3.2 on end
+					end
+					chip drivers/usb/acpi
+						register "desc" = ""USB3 Port Unused1""
+						register "type" = "UPC_TYPE_INTERNAL"
+						device usb 3.3 on end
+					end
+					chip drivers/usb/acpi
+						register "desc" = ""USB3 Port Unused2""
+						register "type" = "UPC_TYPE_INTERNAL"
+						device usb 3.4 on end
+					end
+					chip drivers/usb/acpi
+						register "desc" = ""USB3 Port Unused3""
+						register "type" = "UPC_TYPE_INTERNAL"
+						device usb 3.5 on end
+					end
+				end
+			end
+		end # USB xHCI
+		device pci 14.1 on  end # USB xDCI (OTG)
+		device pci 14.2 on  end # PMC SRAM
+		device pci 14.3 on  end # CNVi wifi
+		device pci 14.5 on  end # SDCard
+		device pci 15.0 on  end
+		device pci 15.1 on  end # I2C #1
+		device pci 15.2 on  end # I2C #2
+		device pci 15.3 on  end # I2C #3
+		device pci 16.0 on  end # Management Engine Interface 1
+		device pci 16.1 on  end # Management Engine Interface 2
+		device pci 16.2 on  end # Management Engine IDE-R
+		device pci 16.3 on  end # Management Engine KT Redirection
+		device pci 16.4 on  end # Management Engine Interface 3
+		device pci 16.5 on  end # Management Engine Interface 4
+		device pci 17.0 on  end # SATA
+		device pci 19.0 on  end # I2C #4
+		device pci 19.1 on  end # I2C #5
+		device pci 19.2 on  end # UART #2
+		device pci 1a.0 on  end # eMMC
+		device pci 1c.0 on  end # Intel Corporation I210 Gigabit Network Connection
+		device pci 1c.4 on  end # Intel Corporation I210 Gigabit Network Connection
+		device pci 1c.5 on 
+			device pci 00.0 on	# Aspeed PCI Bridge
+				device pci 00.0 on end	# Aspeed 2400 VGA
+			end
+        end # ASPEED Technology, Inc. ASPEED Graphics Family
+		device pci 1c.6 on  end # PCI Express Port 7
+		device pci 1c.7 on  end # PCI Express Port 8
+		device pci 1d.0 on  end # PCI Express Port 9
+		device pci 1d.1 on  end # PCI Express Port 10
+		device pci 1d.2 on  end # PCI Express Port 11
+		device pci 1d.3 on  end # PCI Express Port 12
+		device pci 1d.4 on  end # PCI Express Port 13
+		device pci 1d.5 on  end # PCI Express Port 14
+		device pci 1d.6 on  end # PCI Express Port 15
+		device pci 1d.7 on  end # PCI Express Port 16
+		device pci 1e.0 on  end # UART #0
+		device pci 1e.1 on  end # UART #1
+		device pci 1e.2 on  end # GSPI #0
+		device pci 1e.3 on  end # GSPI #1
+		device pci 1f.0 on
+			chip drivers/ipmi
+				# On cold boot it takes a while for the BMC to start the IPMI service
+				register "wait_for_bmc" = "1"
+				register "bmc_boot_timeout" = "60"
+				device pnp ca2.0 on end	# IPMI KCS
+			end
+			chip superio/common
+				device pnp 2e.0 on
+					chip superio/aspeed/ast2400
+						device pnp 2e.2 on	# SUART1
+							io 0x60 = 0x3f8
+							irq 0x70 = 4
+							drq 0xf0 = 0x00
+						end
+						device pnp 2e.3 on	# SUART2
+							io 0x60 = 0x2f8
+							irq 0x70 = 3
+							drq 0xf0 = 0x00
+						end
+						device pnp 2e.4 on	# SWC
+							io 0x60 = 0xa00
+							io 0x62 = 0xa10
+							io 0x64 = 0xa20
+							io 0x66 = 0xa30
+							irq 0x70 = 0x00
+						end
+						device pnp 2e.5 off end	# KBC
+						device pnp 2e.7 on	# GPIO
+							irq 0x70 = 0x00
+						end
+						device pnp 2e.b off end	# SUART3
+						device pnp 2e.c off end	# SUART4
+						device pnp 2e.d on	# iLPC2AHB
+							irq 0x70 = 0x00
+						end
+						device pnp 2e.e on	# Mailbox
+							io 0x60 = 0xa40
+							irq 0x70 = 0x00
+						end
+					end
+				end
+            end
+        end # eSPI Interface
+		device pci 1f.1 on  end # P2SB
+		device pci 1f.2 on  end # Power Management Controller
+		device pci 1f.3 on  end # Intel HDA
+		device pci 1f.4 on  end # SMBus
+		device pci 1f.5 on  end # PCH SPI
+		device pci 1f.6 off end # GbE
+	end
+end

@@ -1,0 +1,76 @@
+config BOARD_SUPERMICRO_BASEBOARD_X12_SPW_SERIES
+	def_bool n
+	select BOARD_ROMSIZE_KB_32768
+	select HAVE_ACPI_TABLES
+	select MAINBOARD_USES_FSP2_0
+	select SOC_INTEL_ICELAKE_SP
+	select DRIVERS_I2C_HID
+	select DRIVERS_I2C_GENERIC
+	select DRIVERS_USB_ACPI
+	select DRIVERS_SPI_ACPI
+	select DRIVERS_ASPEED_AST2050
+	select SUPERIO_ASPEED_AST2400
+	select IPMI_KCS
+	select HAVE_IFD_BIN
+	select HAVE_ME_BIN
+    select ADD_FSP_BINARIES
+    select FSP_FULL_FD
+
+if BOARD_SUPERMICRO_BASEBOARD_X12_SPW_SERIES
+config FSP_HEADER_PATH
+	string
+	default "src/vendorcode/intel/fsp/fsp2_0/icelake_sp"
+
+config FSP_FD_PATH
+    string
+    default "3rdparty/fsp/WhitleyFspBinPkg/Fsp.fd"
+
+config MAINBOARD_FAMILY
+	string
+	default "Supermicro_X12_SPW_SERIES"
+
+config MAX_CPUS
+	int
+	default 8
+
+config MAINBOARD_PART_NUMBER
+	string
+	default "X12SPW-F"	if BOARD_SUPERMICRO_X12SPW_F
+
+config MAINBOARD_DIR
+	string
+	default "supermicro/x12spw"
+
+config VARIANT_DIR
+	string
+	default "x12spw-f"	if BOARD_SUPERMICRO_X12SPW_F
+
+config OVERRIDE_DEVICETREE
+	string
+	default "variants/\$(CONFIG_VARIANT_DIR)/overridetree.cb"
+
+config CBFS_SIZE
+	hex
+	default 0xb00000
+
+config CONSOLE_POST
+	bool
+	default y
+
+config POST_DEVICE
+	bool
+	default n
+
+config DIMM_SPD_SIZE
+	int
+	default 512
+
+config UART_FOR_CONSOLE
+	int
+	default 0
+
+config SUPERMICRO_BOARDID
+	string
+	default "0884"	if BOARD_SUPERMICRO_X12SPW_F
+
+endif  # BOARD_SUPERMICRO_BASEBOARD_X12_SPW_SERIES
