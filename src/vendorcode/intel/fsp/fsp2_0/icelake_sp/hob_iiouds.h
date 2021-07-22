@@ -42,8 +42,8 @@ are permitted provided that the following conditions are met:
 #define MAX_SOCKET                8 // CONFIG_MAX_SOCKET
 #define MaxIIO                    MAX_SOCKET
 #define MAX_IIO_STACK             6
-#define MAX_IMC                   2
-#define MAX_CH                    6
+#define MAX_IMC                   4
+#define MAX_CH                    8
 #define MC_MAX_NODE               (MAX_SOCKET * MAX_IMC)
 #define MAX_CHA_MAP               4
 
