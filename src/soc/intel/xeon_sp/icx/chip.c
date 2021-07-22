@@ -49,7 +49,7 @@ static struct device_operations pci_domain_ops = {
 static struct device_operations cpu_bus_ops = {
 	.read_resources = noop_read_resources,
 	.set_resources = noop_set_resources,
-	.init = cpx_init_cpus,
+	.init = icx_init_cpus,
 	.acpi_fill_ssdt = generate_cpu_entries,
 };
 
@@ -185,8 +185,8 @@ static void chip_init(void *data)
 	p2sb_unhide();
 }
 
-struct chip_operations soc_intel_xeon_sp_cpx_ops = {
-	CHIP_NAME("Intel Cooperlake-SP")
+struct chip_operations soc_intel_xeon_sp_icx_ops = {
+	CHIP_NAME("Intel Icelake-SP")
 	.enable_dev = chip_enable_dev,
 	.init = chip_init,
 	.final = chip_final,

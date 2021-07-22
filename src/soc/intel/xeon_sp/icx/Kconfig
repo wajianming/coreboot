@@ -1,6 +1,6 @@
 ## SPDX-License-Identifier: GPL-2.0-only
 
-if SOC_INTEL_COOPERLAKE_SP
+if SOC_INTEL_ICELAKE_SP
 
 config SOC_SPECIFIC_OPTIONS
 	def_bool y
@@ -9,7 +9,7 @@ config SOC_SPECIFIC_OPTIONS
 config FSP_HEADER_PATH
 	  string "Location of FSP headers"
 	  depends on MAINBOARD_USES_FSP2_0
-	  default "src/vendorcode/intel/fsp/fsp2_0/cooperlake_sp"
+	  default "src/vendorcode/intel/fsp/fsp2_0/icelake_sp"
 
 config MAX_SOCKET
 	int
@@ -54,7 +54,7 @@ config FSP_M_RC_HEAP_SIZE
 	hex
 	default 0x130000
 	help
-	  On xeon_sp/cpx FSP-M has two separate heap managers, one regular
+	  On xeon_sp/icx FSP-M has two separate heap managers, one regular
 	  whose size and base are controllable via the StackBase and
 	  StackSize UPDs and a 'rc' heap manager that is statically
 	  allocated at 0xfe800000 (the CAR base) and consumes about 0x130000
@@ -102,11 +102,11 @@ config CPU_BCLK_MHZ
 	int
 	default 100
 
-# CPX-SP has 2 IMCs, 3 channels per IMC, 2 DIMMs per channel
+# ICX-SP has 4 IMCs, 2 channels per IMC, 2 DIMMs per channel
 # Default value is set to one socket, full config.
 config DIMM_MAX
 	int
-	default 12
+	default 16
 
 # DDR4
 config DIMM_SPD_SIZE

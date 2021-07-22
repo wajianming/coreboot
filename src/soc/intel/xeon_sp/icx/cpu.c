@@ -118,8 +118,7 @@ static struct device_operations cpu_dev_ops = {
 };
 
 static const struct cpu_device_id cpu_table[] = {
-	{X86_VENDOR_INTEL, CPUID_COOPERLAKE_SP_A0},
-	{X86_VENDOR_INTEL, CPUID_COOPERLAKE_SP_A1},
+	{X86_VENDOR_INTEL, CPUID_ICELAKE_SP_D1},
 	{0, 0},
 };
 
@@ -202,7 +201,7 @@ static const struct mp_ops mp_ops = {
 	.post_mp_init = post_mp_init,
 };
 
-void cpx_init_cpus(struct device *dev)
+void icx_init_cpus(struct device *dev)
 {
 	microcode_patch = intel_microcode_find();
 

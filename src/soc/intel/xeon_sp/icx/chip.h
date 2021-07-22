@@ -46,7 +46,7 @@ enum ddr_freq_limit {
 	DDR_3200 = 0x13
 };
 
-struct soc_intel_xeon_sp_cpx_config {
+struct soc_intel_xeon_sp_icx_config {
 	/* Common struct containing soc config data required by common code */
 	struct soc_intel_common_config common_soc_config;
 
@@ -116,6 +116,6 @@ struct soc_intel_xeon_sp_cpx_config {
 	enum acpi_cstate_mode cstate_states;
 };
 
-typedef struct soc_intel_xeon_sp_cpx_config config_t;
+typedef struct soc_intel_xeon_sp_icx_config config_t;
 
 #endif
