@@ -102,6 +102,11 @@ const struct madt_ioapic_info *soc_get_ioapic_info(size_t *entries)
 	const IIO_UDS *hob = get_iio_uds();
 
 	/* With XEON-SP FSP, PCH IOAPIC is allocated with first 120 GSIs. */
+#if (CONFIG(SOC_INTEL_ICELAKE_SP))
+    //TODO: Identify the correct setting for Ice Lake-SP.
+	const int gsi_bases[] = { 0, 0x78, 0x80, 0x88, 0x90, 0x98, 0xA0, 0xA8, 0xB0 };
+#endif
+
 #if (CONFIG(SOC_INTEL_COOPERLAKE_SP))
 	const int gsi_bases[] = { 0, 0x78, 0x80, 0x88, 0x90, 0x98, 0xA0, 0xA8, 0xB0 };
 #endif
