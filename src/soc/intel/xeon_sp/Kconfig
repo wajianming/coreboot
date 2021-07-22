@@ -2,6 +2,7 @@
 
 source "src/soc/intel/xeon_sp/skx/Kconfig"
 source "src/soc/intel/xeon_sp/cpx/Kconfig"
+source "src/soc/intel/xeon_sp/icx/Kconfig"
 source "src/soc/intel/xeon_sp/ras/Kconfig"
 
 config XEON_SP_COMMON_BASE
@@ -21,6 +22,14 @@ config SOC_INTEL_COOPERLAKE_SP
 	select CACHE_MRC_SETTINGS
 	help
 	  Intel Cooperlake-SP support
+
+config SOC_INTEL_ICELAKE_SP
+	bool
+	select XEON_SP_COMMON_BASE
+	select PLATFORM_USES_FSP2_1
+	select CACHE_MRC_SETTINGS
+	help
+	  Intel Icelake-SP support
 
 if XEON_SP_COMMON_BASE
 
